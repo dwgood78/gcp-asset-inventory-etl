@@ -1,0 +1,4 @@
+google-cloud-asset==3.19.0
+functions_framework
+google-cloud-error-reporting==1.4.1
+google-cloud-bigquery==3.11.2

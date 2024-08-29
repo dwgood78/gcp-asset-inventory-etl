@@ -1,0 +1,56 @@
+from google.cloud import asset_v1
+
+def asset_inventory_to_bigquery(
+    asset_level, asset_level_number, project_id, dataset_name, table_name
+):
+    """
+    This method pulls asset inventory data to a new temporary bigquery table
+    in a specified project
+
+    Parameters:
+            asset_level (str):          The level that the asset inventory will be pulled from
+                                        (Ex: projects, folders, organizations)
+            asset_level_number (str):   The number associated with the asset level
+            project_id (str):           The project id that will host the bigquery dataset and tables
+            dataset_name (str):         The name of the dataset that will hold both the partitioned and
+                                        unpartitioned tables
+            table_name (str):           The name of the unpartitioned table
+
+    Returns:
+            None
+    """
+    client = asset_v1.AssetServiceClient()
+    parent = "{}/{}".format(asset_level, asset_level_number)
+    output_config = asset_v1.OutputConfig()
+    output_config.bigquery_destination.dataset = "projects/{}/datasets/{}".format(
+        project_id, dataset_name
+    )  # noqa: E501
+    output_config.bigquery_destination.table = table_name
+    output_config.bigquery_destination.partition_spec.partition_key = 2
+    output_config.bigquery_destination.force = False
+    client.export_assets(
+        request={
+            "parent": parent,
+            "content_type": "RESOURCE",
+            "output_config": output_config,
+        }
+    )
+
+# Entry point for Cloud Function
+def project_details(data, content):
+    project_id = "starry-diode-376414g"
+    dataset_name = "demo_asset_inventory"
+
+    asset_unpartitioned_name = "demo-inventory-v2"
+
+    asset_level = "folders"
+    asset_level_number = "106623823638"
+
+    # Call Asset Inventory to BigQuery Function
+    asset_inventory_to_bigquery(
+        asset_level,
+        asset_level_number,
+        project_id,
+        dataset_name,
+        asset_unpartitioned_name,
+    )  # noqa: E501
