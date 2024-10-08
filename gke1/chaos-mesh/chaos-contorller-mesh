@@ -1,0 +1,504 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "1"
+    meta.helm.sh/release-name: chaos-mesh
+    meta.helm.sh/release-namespace: chaos-mesh
+  creationTimestamp: "2024-08-30T15:13:33Z"
+  generation: 1
+  labels:
+    app.kubernetes.io/component: controller-manager
+    app.kubernetes.io/instance: chaos-mesh
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: chaos-mesh
+    app.kubernetes.io/part-of: chaos-mesh
+    app.kubernetes.io/version: 2.6.3
+    helm.sh/chart: chaos-mesh-2.6.3
+  managedFields:
+  - apiVersion: apps/v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:meta.helm.sh/release-name: {}
+          f:meta.helm.sh/release-namespace: {}
+        f:labels:
+          .: {}
+          f:app.kubernetes.io/component: {}
+          f:app.kubernetes.io/instance: {}
+          f:app.kubernetes.io/managed-by: {}
+          f:app.kubernetes.io/name: {}
+          f:app.kubernetes.io/part-of: {}
+          f:app.kubernetes.io/version: {}
+          f:helm.sh/chart: {}
+      f:spec:
+        f:progressDeadlineSeconds: {}
+        f:replicas: {}
+        f:revisionHistoryLimit: {}
+        f:selector: {}
+        f:strategy:
+          f:rollingUpdate:
+            .: {}
+            f:maxSurge: {}
+            f:maxUnavailable: {}
+          f:type: {}
+        f:template:
+          f:metadata:
+            f:annotations:
+              .: {}
+              f:rollme: {}
+            f:labels:
+              .: {}
+              f:app.kubernetes.io/component: {}
+              f:app.kubernetes.io/instance: {}
+              f:app.kubernetes.io/managed-by: {}
+              f:app.kubernetes.io/name: {}
+              f:app.kubernetes.io/part-of: {}
+              f:app.kubernetes.io/version: {}
+              f:helm.sh/chart: {}
+          f:spec:
+            f:containers:
+              k:{"name":"chaos-mesh"}:
+                .: {}
+                f:command: {}
+                f:env:
+                  .: {}
+                  k:{"name":"ALLOW_HOST_NETWORK_TESTING"}:
+                    .: {}
+                    f:name: {}
+                    f:value: {}
+                  k:{"name":"BPFKI_PORT"}:
+                    .: {}
+                    f:name: {}
+                    f:value: {}
+                  k:{"name":"BURST"}:
+                    .: {}
+                    f:name: {}
+                    f:value: {}
+                  k:{"name":"CHAOS_DAEMON_CLIENT_CERT"}:
+                    .: {}
+                    f:name: {}
+                    f:value: {}
+                  k:{"name":"CHAOS_DAEMON_CLIENT_KEY"}:
+                    .: {}
+                    f:name: {}
+                    f:value: {}
+                  k:{"name":"CHAOS_DAEMON_SERVICE_PORT"}:
+                    .: {}
+                    f:name: {}
+                    f:value: {}
+                  k:{"name":"CHAOS_DNS_SERVICE_NAME"}:
+                    .: {}
+                    f:name: {}
+                    f:value: {}
+                  k:{"name":"CHAOS_DNS_SERVICE_PORT"}:
+                    .: {}
+                    f:name: {}
+                    f:value: {}
+                  k:{"name":"CHAOS_MESH_CA_CERT"}:
+                    .: {}
+                    f:name: {}
+                    f:value: {}
+                  k:{"name":"CHAOSD_CA_CERT"}:
+                    .: {}
+                    f:name: {}
+                    f:value: {}
+                  k:{"name":"CHAOSD_CLIENT_CERT"}:
+                    .: {}
+                    f:name: {}
+                    f:value: {}
+                  k:{"name":"CHAOSD_CLIENT_KEY"}:
+                    .: {}
+                    f:name: {}
+                    f:value: {}
+                  k:{"name":"CHAOSD_SECURITY_MODE"}:
+                    .: {}
+                    f:name: {}
+                    f:value: {}
+                  k:{"name":"CLUSTER_SCOPED"}:
+                    .: {}
+                    f:name: {}
+                    f:value: {}
+                  k:{"name":"CONFIGMAP_LABELS"}:
+                    .: {}
+                    f:name: {}
+                    f:value: {}
+                  k:{"name":"CTRL_ADDR"}:
+                    .: {}
+                    f:name: {}
+                    f:value: {}
+                  k:{"name":"ENABLE_FILTER_NAMESPACE"}:
+                    .: {}
+                    f:name: {}
+                    f:value: {}
+                  k:{"name":"ENABLE_LEADER_ELECTION"}:
+                    .: {}
+                    f:name: {}
+                    f:value: {}
+                  k:{"name":"ENABLED_CONTROLLERS"}:
+                    .: {}
+                    f:name: {}
+                    f:value: {}
+                  k:{"name":"ENABLED_WEBHOOKS"}:
+                    .: {}
+                    f:name: {}
+                    f:value: {}
+                  k:{"name":"LEADER_ELECT_LEASE_DURATION"}:
+                    .: {}
+                    f:name: {}
+                    f:value: {}
+                  k:{"name":"LEADER_ELECT_RENEW_DEADLINE"}:
+                    .: {}
+                    f:name: {}
+                    f:value: {}
+                  k:{"name":"LEADER_ELECT_RETRY_PERIOD"}:
+                    .: {}
+                    f:name: {}
+                    f:value: {}
+                  k:{"name":"METRICS_PORT"}:
+                    .: {}
+                    f:name: {}
+                    f:value: {}
+                  k:{"name":"NAMESPACE"}:
+                    .: {}
+                    f:name: {}
+                    f:valueFrom:
+                      .: {}
+                      f:fieldRef: {}
+                  k:{"name":"POD_FAILURE_PAUSE_IMAGE"}:
+                    .: {}
+                    f:name: {}
+                    f:value: {}
+                  k:{"name":"PPROF_ADDR"}:
+                    .: {}
+                    f:name: {}
+                    f:value: {}
+                  k:{"name":"QPS"}:
+                    .: {}
+                    f:name: {}
+                    f:value: {}
+                  k:{"name":"SECURITY_MODE"}:
+                    .: {}
+                    f:name: {}
+                    f:value: {}
+                  k:{"name":"TARGET_NAMESPACE"}:
+                    .: {}
+                    f:name: {}
+                    f:value: {}
+                  k:{"name":"TEMPLATE_LABELS"}:
+                    .: {}
+                    f:name: {}
+                    f:value: {}
+                  k:{"name":"TEMPLATE_NAMESPACE"}:
+                    .: {}
+                    f:name: {}
+                    f:valueFrom:
+                      .: {}
+                      f:fieldRef: {}
+                  k:{"name":"TZ"}:
+                    .: {}
+                    f:name: {}
+                    f:value: {}
+                  k:{"name":"WEBHOOK_PORT"}:
+                    .: {}
+                    f:name: {}
+                    f:value: {}
+                f:image: {}
+                f:imagePullPolicy: {}
+                f:name: {}
+                f:ports:
+                  .: {}
+                  k:{"containerPort":10080,"protocol":"TCP"}:
+                    .: {}
+                    f:containerPort: {}
+                    f:name: {}
+                    f:protocol: {}
+                  k:{"containerPort":10081,"protocol":"TCP"}:
+                    .: {}
+                    f:containerPort: {}
+                    f:name: {}
+                    f:protocol: {}
+                  k:{"containerPort":10082,"protocol":"TCP"}:
+                    .: {}
+                    f:containerPort: {}
+                    f:name: {}
+                    f:protocol: {}
+                  k:{"containerPort":10250,"protocol":"TCP"}:
+                    .: {}
+                    f:containerPort: {}
+                    f:name: {}
+                    f:protocol: {}
+                f:resources:
+                  .: {}
+                  f:requests:
+                    .: {}
+                    f:cpu: {}
+                    f:memory: {}
+                f:terminationMessagePath: {}
+                f:terminationMessagePolicy: {}
+                f:volumeMounts:
+                  .: {}
+                  k:{"mountPath":"/etc/chaos-daemon/cert"}:
+                    .: {}
+                    f:mountPath: {}
+                    f:name: {}
+                    f:readOnly: {}
+                  k:{"mountPath":"/etc/chaosd/cert"}:
+                    .: {}
+                    f:mountPath: {}
+                    f:name: {}
+                    f:readOnly: {}
+                  k:{"mountPath":"/etc/webhook/certs"}:
+                    .: {}
+                    f:mountPath: {}
+                    f:name: {}
+                    f:readOnly: {}
+            f:dnsPolicy: {}
+            f:restartPolicy: {}
+            f:schedulerName: {}
+            f:securityContext: {}
+            f:serviceAccount: {}
+            f:serviceAccountName: {}
+            f:terminationGracePeriodSeconds: {}
+            f:volumes:
+              .: {}
+              k:{"name":"chaos-daemon-client-cert"}:
+                .: {}
+                f:name: {}
+                f:secret:
+                  .: {}
+                  f:defaultMode: {}
+                  f:secretName: {}
+              k:{"name":"chaosd-client-cert"}:
+                .: {}
+                f:name: {}
+                f:secret:
+                  .: {}
+                  f:defaultMode: {}
+                  f:secretName: {}
+              k:{"name":"webhook-certs"}:
+                .: {}
+                f:name: {}
+                f:secret:
+                  .: {}
+                  f:defaultMode: {}
+                  f:secretName: {}
+    manager: helm
+    operation: Update
+    time: "2024-08-30T15:13:33Z"
+  - apiVersion: apps/v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          f:deployment.kubernetes.io/revision: {}
+      f:status:
+        f:conditions:
+          .: {}
+          k:{"type":"Available"}:
+            .: {}
+            f:lastTransitionTime: {}
+            f:lastUpdateTime: {}
+            f:message: {}
+            f:reason: {}
+            f:status: {}
+            f:type: {}
+          k:{"type":"Progressing"}:
+            .: {}
+            f:lastTransitionTime: {}
+            f:lastUpdateTime: {}
+            f:message: {}
+            f:reason: {}
+            f:status: {}
+            f:type: {}
+        f:observedGeneration: {}
+        f:replicas: {}
+        f:unavailableReplicas: {}
+        f:updatedReplicas: {}
+    manager: kube-controller-manager
+    operation: Update
+    subresource: status
+    time: "2024-08-30T15:23:35Z"
+  name: chaos-controller-manager
+  namespace: chaos-mesh
+  resourceVersion: "49508"
+  uid: f62271ba-230a-4f3d-bb49-e7f6ee602323
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 3
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app.kubernetes.io/component: controller-manager
+      app.kubernetes.io/instance: chaos-mesh
+      app.kubernetes.io/name: chaos-mesh
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      annotations:
+        rollme: oSriR
+      creationTimestamp: null
+      labels:
+        app.kubernetes.io/component: controller-manager
+        app.kubernetes.io/instance: chaos-mesh
+        app.kubernetes.io/managed-by: Helm
+        app.kubernetes.io/name: chaos-mesh
+        app.kubernetes.io/part-of: chaos-mesh
+        app.kubernetes.io/version: 2.6.3
+        helm.sh/chart: chaos-mesh-2.6.3
+    spec:
+      containers:
+      - command:
+        - /usr/local/bin/chaos-controller-manager
+        env:
+        - name: METRICS_PORT
+          value: "10080"
+        - name: WEBHOOK_PORT
+          value: "10250"
+        - name: NAMESPACE
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.namespace
+        - name: TEMPLATE_NAMESPACE
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.namespace
+        - name: ALLOW_HOST_NETWORK_TESTING
+          value: "false"
+        - name: TARGET_NAMESPACE
+          value: chaos-mesh
+        - name: CLUSTER_SCOPED
+          value: "true"
+        - name: TZ
+          value: UTC
+        - name: CHAOS_DAEMON_SERVICE_PORT
+          value: "31767"
+        - name: BPFKI_PORT
+          value: "50051"
+        - name: ENABLED_CONTROLLERS
+          value: '*'
+        - name: ENABLED_WEBHOOKS
+          value: '*'
+        - name: TEMPLATE_LABELS
+          value: app.kubernetes.io/component:template
+        - name: CONFIGMAP_LABELS
+          value: app.kubernetes.io/component:webhook
+        - name: ENABLE_FILTER_NAMESPACE
+          value: "false"
+        - name: PPROF_ADDR
+          value: :10081
+        - name: CTRL_ADDR
+          value: :10082
+        - name: CHAOS_DNS_SERVICE_NAME
+          value: chaos-mesh-dns-server
+        - name: CHAOS_DNS_SERVICE_PORT
+          value: "9288"
+        - name: SECURITY_MODE
+          value: "true"
+        - name: CHAOSD_SECURITY_MODE
+          value: "true"
+        - name: CHAOS_DAEMON_CLIENT_CERT
+          value: /etc/chaos-daemon/cert/tls.crt
+        - name: CHAOS_DAEMON_CLIENT_KEY
+          value: /etc/chaos-daemon/cert/tls.key
+        - name: CHAOS_MESH_CA_CERT
+          value: /etc/chaos-daemon/cert/ca.crt
+        - name: QPS
+          value: "30"
+        - name: BURST
+          value: "50"
+        - name: CHAOSD_CA_CERT
+          value: /etc/chaosd/cert/ca.crt
+        - name: CHAOSD_CLIENT_CERT
+          value: /etc/chaosd/cert/tls.crt
+        - name: CHAOSD_CLIENT_KEY
+          value: /etc/chaosd/cert/tls.key
+        - name: POD_FAILURE_PAUSE_IMAGE
+          value: gcr.io/google-containers/pause:latest
+        - name: ENABLE_LEADER_ELECTION
+          value: "true"
+        - name: LEADER_ELECT_LEASE_DURATION
+          value: 15s
+        - name: LEADER_ELECT_RENEW_DEADLINE
+          value: 10s
+        - name: LEADER_ELECT_RETRY_PERIOD
+          value: 2s
+        image: ghcr.io/chaos-mesh/chaos-mesh:v2.6.3
+        imagePullPolicy: IfNotPresent
+        name: chaos-mesh
+        ports:
+        - containerPort: 10250
+          name: webhook
+          protocol: TCP
+        - containerPort: 10080
+          name: http
+          protocol: TCP
+        - containerPort: 10081
+          name: pprof
+          protocol: TCP
+        - containerPort: 10082
+          name: ctrl
+          protocol: TCP
+        resources:
+          requests:
+            cpu: 25m
+            memory: 256Mi
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        volumeMounts:
+        - mountPath: /etc/webhook/certs
+          name: webhook-certs
+          readOnly: true
+        - mountPath: /etc/chaos-daemon/cert
+          name: chaos-daemon-client-cert
+          readOnly: true
+        - mountPath: /etc/chaosd/cert
+          name: chaosd-client-cert
+          readOnly: true
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      serviceAccount: chaos-controller-manager
+      serviceAccountName: chaos-controller-manager
+      terminationGracePeriodSeconds: 30
+      volumes:
+      - name: webhook-certs
+        secret:
+          defaultMode: 420
+          secretName: chaos-mesh-webhook-certs
+      - name: chaos-daemon-client-cert
+        secret:
+          defaultMode: 420
+          secretName: chaos-mesh-daemon-client-certs
+      - name: chaosd-client-cert
+        secret:
+          defaultMode: 420
+          secretName: chaos-mesh-chaosd-client-certs
+status:
+  conditions:
+  - lastTransitionTime: "2024-08-30T15:13:33Z"
+    lastUpdateTime: "2024-08-30T15:13:33Z"
+    message: Deployment does not have minimum availability.
+    reason: MinimumReplicasUnavailable
+    status: "False"
+    type: Available
+  - lastTransitionTime: "2024-08-30T15:23:35Z"
+    lastUpdateTime: "2024-08-30T15:23:35Z"
+    message: ReplicaSet "chaos-controller-manager-685bdf76dd" has timed out progressing.
+    reason: ProgressDeadlineExceeded
+    status: "False"
+    type: Progressing
+  observedGeneration: 1
+  replicas: 3
+  unavailableReplicas: 3
+  updatedReplicas: 3
+
