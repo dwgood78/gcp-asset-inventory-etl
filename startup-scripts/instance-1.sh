@@ -8,7 +8,7 @@ sudo apt-get install google-cloud-sdk
 gcloud init
 
 # Configure the project
-gcloud config set project starry-diode-376414
+gcloud config set project [PROJECT_ID]
 
 # Set the default zone
 gcloud config set compute/zone us-central1-c
@@ -20,7 +20,7 @@ gcloud iam service-accounts create error-reporting-service-account --display-nam
 gcloud iam service-accounts add-role roles/logging.logWriter error-reporting-service-account
 
 # Create a key for the service account
-gcloud iam service-accounts keys create error-reporting-service-account.json --iam-account=error-reporting-service-account@starry-diode-376414.iam.gserviceaccount.com
+gcloud iam service-accounts keys create error-reporting-service-account.json --iam-account=error-reporting-service-account@[PROJECT_ID]iam.gserviceaccount.com
 
 # Set the service account credentials
 gcloud auth activate-service-account --key-file error-reporting-service-account.json
