@@ -1,12 +1,12 @@
 # Cloud Function request a connection. VPC Networks are not shown so entered in:
-projects/PROJECT_ID/locations/us-central1/connectors/
+projects/PROJECT_ID/locations/[REGION]/connectors/
 
-projects/PROJECT_ID/locations/us-central1/connectors/test
+projects/PROJECT_ID/locations/[REGION]/connectors/test
 
 
 # Cloud Pub/Sub trigger events
 Cloud Pub/Sub
-projects/starry-diode-376414/topics/asset-inventory-sub
+projects/[PROJECT_ID]/topics/asset-inventory-sub
 
 # Commands to gernerate errors to Error Reporting 
 
