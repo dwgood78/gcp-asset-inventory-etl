@@ -2,10 +2,10 @@
 docker pull <not-reachable-location> .
 
 # Tag the image for GCR: (Replace `[PROJECT_ID]` with your actual GCP project ID).
-docker tag <not-reachable-location> gcr.io/error-reporting-432509/<nameofimage> 
+docker tag <not-reachable-location> gcr.io/[PROJECT_ID]/<nameofimage> 
 
 # Push the image to GCR:
-docker push gcr.io/error-reporting-432509/<nameofimage>
+docker push gcr.io/[PROJECT_ID]/<nameofimage>
 
 
 docker pull ghcr.io/chaos-mesh/chaos-mesh:v2.6.3
