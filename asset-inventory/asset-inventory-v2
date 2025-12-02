@@ -38,13 +38,13 @@ def asset_inventory_to_bigquery(
 
 # Entry point for Cloud Function
 def project_details(data, content):
-    project_id = "starry-diode-376414g"
+    project_id = "[PROJECT_ID]"
     dataset_name = "demo_asset_inventory"
 
     asset_unpartitioned_name = "demo-inventory-v2"
 
     asset_level = "folders"
-    asset_level_number = "106623823638"
+    asset_level_number = "[FOLDER_ID]"
 
     # Call Asset Inventory to BigQuery Function
     asset_inventory_to_bigquery(

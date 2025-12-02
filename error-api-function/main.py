@@ -65,5 +65,5 @@ def list_recent_errors(project_id):
         print(f"An error occurred: {e}")
 
 if __name__ == "__main__":
-    project_id = "starry-diode-376414"
+    project_id = "[PROJECT_ID]"
     list_recent_errors(project_id)
