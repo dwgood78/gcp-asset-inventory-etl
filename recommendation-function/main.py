@@ -3,7 +3,7 @@ from google.api_core.exceptions import GoogleAPICallError, InvalidArgument
 from flask import jsonify
 
 def list_recommendations(request):
-    project_id = "error-reporting-432509"
+    project_id = "PROJECT_ID"
     
     # Replace with the location (e.g., "global", "us-central1")
     location = "global"
@@ -40,5 +40,3 @@ def list_recommendations(request):
         print(f"Unexpected error: {e}")
         return f"Error: {str(e)}", 400
     
-
-
