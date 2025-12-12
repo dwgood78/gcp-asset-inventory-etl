@@ -1,3 +1,4 @@
+# Cloud Run Function v2
 from google.cloud import asset_v1
 
 def asset_inventory_to_bigquery(
