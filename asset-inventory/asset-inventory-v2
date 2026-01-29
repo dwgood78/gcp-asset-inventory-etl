@@ -1,57 +1,66 @@
-# Cloud Run Function v2
+import os
 from google.cloud import asset_v1
 
 def asset_inventory_to_bigquery(
     asset_level, asset_level_number, project_id, dataset_name, table_name
 ):
     """
-    This method pulls asset inventory data to a new temporary bigquery table
-    in a specified project
-
-    Parameters:
-            asset_level (str):          The level that the asset inventory will be pulled from
-                                        (Ex: projects, folders, organizations)
-            asset_level_number (str):   The number associated with the asset level
-            project_id (str):           The project id that will host the bigquery dataset and tables
-            dataset_name (str):         The name of the dataset that will hold both the partitioned and
-                                        unpartitioned tables
-            table_name (str):           The name of the unpartitioned table
-
-    Returns:
-            None
+    Exports asset inventory data to a BigQuery table.
     """
     client = asset_v1.AssetServiceClient()
-    parent = "{}/{}".format(asset_level, asset_level_number)
-    output_config = asset_v1.OutputConfig()
-    output_config.bigquery_destination.dataset = "projects/{}/datasets/{}".format(
-        project_id, dataset_name
-    )  # noqa: E501
-    output_config.bigquery_destination.table = table_name
-    output_config.bigquery_destination.partition_spec.partition_key = 2
-    output_config.bigquery_destination.force = False
-    client.export_assets(
-        request={
-            "parent": parent,
-            "content_type": "RESOURCE",
-            "output_config": output_config,
-        }
+    
+    # Correct format: "projects/12345" or "folders/67890"
+    parent = f"{asset_level}/{asset_level_number}"
+    
+    # Initialize BigQuery destination
+    bigquery_destination = asset_v1.BigQueryDestination(
+        dataset=f"projects/{project_id}/datasets/{dataset_name}",
+        table=table_name,
+        force=True, # Set to True to overwrite if testing, False to prevent overwrite
     )
 
-# Entry point for Cloud Function
-def project_details(data, content):
+    # Note: partition_key must be an ENUM value, not an integer.
+    # PARTITION_KEY_UNSPECIFIED = 0, REQUEST_TIME = 1, READ_TIME = 2
+    bigquery_destination.partition_spec.partition_key = asset_v1.PartitionKey.REQUEST_TIME
+
+    output_config = asset_v1.OutputConfig(bigquery_destination=bigquery_destination)
+
+    request = asset_v1.ExportAssetsRequest(
+        parent=parent,
+        content_type=asset_v1.ContentType.RESOURCE,
+        output_config=output_config,
+    )
+
+    # export_assets returns a Long Running Operation (LRO)
+    operation = client.export_assets(request=request)
+    print(f"Export started: {operation.operation.name}. Waiting for completion...")
+    
+    # This will block until the export is finished
+    result = operation.result()
+    print("Export completed successfully.")
+
+# Entry point for Cloud Function (v2)
+def project_details(request):
+    # For Cloud Run functions, 'request' is a Flask Request object
+    # If triggering via HTTP, you can parse params here. 
+    # For now, we'll use your hardcoded values.
+    
     project_id = "[PROJECT_ID]"
     dataset_name = "demo_asset_inventory"
-
-    asset_unpartitioned_name = "demo-inventory-v2"
+    asset_unpartitioned_name = "demo_inventory_v2" # Tip: Use underscores for BQ tables
 
     asset_level = "folders"
     asset_level_number = "[FOLDER_ID]"
 
-    # Call Asset Inventory to BigQuery Function
-    asset_inventory_to_bigquery(
-        asset_level,
-        asset_level_number,
-        project_id,
-        dataset_name,
-        asset_unpartitioned_name,
-    )  # noqa: E501
+    try:
+        asset_inventory_to_bigquery(
+            asset_level,
+            asset_level_number,
+            project_id,
+            dataset_name,
+            asset_unpartitioned_name,
+        )
+        return "Inventory export initiated.", 200
+    except Exception as e:
+        print(f"Error: {e}")
+        return f"Export failed: {str(e)}", 500
